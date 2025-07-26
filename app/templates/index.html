@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Credit Card Default Prediction</title>
+  <style>
+    body {
+      background: #1e1e2f;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background: #2c2c44;
+      border-radius: 12px;
+      padding: 20px 25px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #f0a500;
+      text-shadow: 0 0 5px #f0a500aa;
+      font-size: 1.8rem;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 20px;
+    }
+    label {
+      font-weight: 600;
+      color: #ffd166;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      display: block;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 6px 8px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      box-sizing: border-box;
+      background: #3a3a5c;
+      color: #eee;
+      transition: outline 0.3s ease;
+    }
+    input[type="number"]:focus {
+      outline: 2px solid #f0a500;
+      background: #484875;
+      color: #fff;
+    }
+    button {
+      grid-column: 1 / -1;
+      padding: 10px;
+      background: #f0a500;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #1e1e2f;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #d18e00;
+    }
+    .result {
+      grid-column: 1 / -1;
+      margin-top: 15px;
+      padding: 12px;
+      background: #16213e;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #90ee90;
+      text-align: center;
+      box-shadow: 0 0 10px #90ee90aa;
+    }
+    .result.default {
+      color: #ff4c4c;
+      box-shadow: 0 0 10px #ff4c4caa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Credit Card Default Prediction</h1>
+    <form method="POST" action="/predict">
+      <label for="feature0">Limit Balance</label>
+      <input type="number" step="any" id="feature0" name="feature0" placeholder="e.g., 20000" required>
+
+      <label for="feature1">Sex (1=male, 2=female)</label>
+      <input type="number" id="feature1" name="feature1" min="1" max="2" required>
+
+      <label for="feature2">Education (1=graduate, 2=university, 3=high school, 4=others)</label>
+      <input type="number" id="feature2" name="feature2" min="1" max="4" required>
+
+      <label for="feature3">Marriage Status (1=married, 2=single, 3=others)</label>
+      <input type="number" id="feature3" name="feature3" min="1" max="3" required>
+
+      <label for="feature4">Age</label>
+      <input type="number" id="feature4" name="feature4" min="18" max="100" required>
+
+      <label for="feature5">Repayment Status Sept (PAY_0)</label>
+      <input type="number" id="feature5" name="feature5" placeholder="-2 to 8" required>
+
+      <label for="feature6">Repayment Status Aug (PAY_2)</label>
+      <input type="number" id="feature6" name="feature6" placeholder="-2 to 8" required>
+
+      <label for="feature7">Repayment Status July (PAY_3)</label>
+      <input type="number" id="feature7" name="feature7" placeholder="-2 to 8" required>
+
+      <label for="feature8">Repayment Status June (PAY_4)</label>
+      <input type="number" id="feature8" name="feature8" placeholder="-2 to 8" required>
+
+      <label for="feature9">Repayment Status May (PAY_5)</label>
+      <input type="number" id="feature9" name="feature9" placeholder="-2 to 8" required>
+
+      <label for="feature10">Repayment Status April (PAY_6)</label>
+      <input type="number" id="feature10" name="feature10" placeholder="-2 to 8" required>
+
+      <label for="feature11">Bill Amount Sept</label>
+      <input type="number" step="any" id="feature11" name="feature11" placeholder="e.g., 50000" required>
+
+      <label for="feature12">Bill Amount Aug</label>
+      <input type="number" step="any" id="feature12" name="feature12" placeholder="e.g., 45000" required>
+
+      <label for="feature13">Bill Amount July</label>
+      <input type="number" step="any" id="feature13" name="feature13" placeholder="e.g., 40000" required>
+
+      <label for="feature14">Bill Amount June</label>
+      <input type="number" step="any" id="feature14" name="feature14" placeholder="e.g., 39000" required>
+
+      <label for="feature15">Bill Amount May</label>
+      <input type="number" step="any" id="feature15" name="feature15" placeholder="e.g., 38000" required>
+
+      <label for="feature16">Bill Amount April</label>
+      <input type="number" step="any" id="feature16" name="feature16" placeholder="e.g., 37000" required>
+
+      <label for="feature17">Payment Amount Sept</label>
+      <input type="number" step="any" id="feature17" name="feature17" placeholder="e.g., 2000" required>
+
+      <label for="feature18">Payment Amount Aug</label>
+      <input type="number" step="any" id="feature18" name="feature18" placeholder="e.g., 1800" required>
+
+      <label for="feature19">Payment Amount July</label>
+      <input type="number" step="any" id="feature19" name="feature19" placeholder="e.g., 1500" required>
+
+      <label for="feature20">Payment Amount June</label>
+      <input type="number" step="any" id="feature20" name="feature20" placeholder="e.g., 1500" required>
+
+      <label for="feature21">Payment Amount May</label>
+      <input type="number" step="any" id="feature21" name="feature21" placeholder="e.g., 1500" required>
+
+      <label for="feature22">Payment Amount April</label>
+      <input type="number" step="any" id="feature22" name="feature22" placeholder="e.g., 1500" required>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result {% if prediction == 'Default' %}default{% endif %}">
+      Prediction: {{ prediction }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
