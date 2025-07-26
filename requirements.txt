@@ -6,3 +6,5 @@ scikit-learn
 xgboost
 flask
 joblib
+gunicorn
+
