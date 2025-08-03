@@ -3,6 +3,9 @@
 ## Project Overview
 This project predicts whether a credit card customer will default on their payment next month using machine learning. The model is trained on historical credit card usage data and includes data preprocessing, feature engineering, model training, and evaluation.
 
+🔗 Live App: https://lnkd.in/dbbyUQqK
+ 🔗 GitHub: https://lnkd.in/dUX2F8zm
+
 ## Features
 - Data preprocessing and cleaning
 - Feature scaling using StandardScaler
