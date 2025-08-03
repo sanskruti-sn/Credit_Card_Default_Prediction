@@ -11,36 +11,6 @@ This project predicts whether a credit card customer will default on their payme
 - Flask-based web application for prediction
 - Unit tests for code reliability
 
-## Project Structure
-
-├── .gitignore
-├── main.py
-├── README.md
-├── requirements.txt
-├── .venv/ # Virtual environment folder
-├── app/
-│ ├── app.py # Flask app backend
-│ └── templates/
-│ └── index.html # Frontend HTML page
-├── data/
-│ └── UCI_Credit_Card.csv # Original dataset
-├── notebooks/
-│ ├── artifacts/
-│ │ ├── model.pkl # Saved ML model
-│ │ └── scaler.pkl # Saved scaler for features
-│ ├── logs/
-│ │ └── app.log # Log file for app
-│ └── eda_and_modeling.ipynb # Jupyter notebook for EDA & modeling
-├── src/
-│ ├── init.py
-│ ├── data_ingestion.py # Data loading and ingestion scripts
-│ ├── model.py # Model training and evaluation scripts
-│ ├── predict.py # Prediction helper functions
-│ ├── preprocessing.py # Data preprocessing scripts
-│ └── pycache/ # Python cache files
-├── tests/
-│ ├── test_model.py # Unit tests for model and preprocessing
-│ └── pycache/ # Python cache files
 
 
 
